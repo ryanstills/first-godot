@@ -12,18 +12,18 @@ size = 64
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 36
 font_data = ExtResource( 2 )
 
-[sub_resource type="InputEventAction" id=4]
+[sub_resource type="InputEventAction" id=5]
 action = "ui_select"
 
-[sub_resource type="ShortCut" id=5]
-shortcut = SubResource( 4 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 2 )
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -46,36 +46,6 @@ text = "Dodge the
 Creeps!"
 align = 1
 
-[node name="StartButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -172.201
-margin_top = -194.965
-margin_right = -29.2014
-margin_bottom = -94.965
-custom_fonts/font = SubResource( 3 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 5 )
-text = "Start"
-
-[node name="HighScoreButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 32.2811
-margin_top = -195.965
-margin_right = 175.281
-margin_bottom = -95.965
-custom_fonts/font = SubResource( 3 )
-shortcut_in_tooltip = false
-shortcut = SubResource( 5 )
-text = "Load"
-
-[node name="MessageTimer" type="Timer" parent="."]
-
 [node name="HighScore" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -85,9 +55,24 @@ margin_left = -101.0
 margin_top = -243.5
 margin_right = 101.0
 margin_bottom = -204.5
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 text = "High Score: "
 align = 1
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -65.201
+margin_top = -194.965
+margin_right = 77.7986
+margin_bottom = -94.965
+custom_fonts/font = SubResource( 4 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 6 )
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="HighScoreButton" to="." method="_on_HighScoreButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

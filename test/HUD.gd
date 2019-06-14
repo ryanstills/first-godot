@@ -12,11 +12,10 @@ func show_game_over():
 	show_message("Game Over")
 	yield($MessageTimer, "timeout")
 	$Message.text = "Dodge the\nCreeps!"
-	$Message.show()
 	yield(get_tree().create_timer(1), "timeout")
+	$Message.show()
 	$StartButton.show()
 	$HighScore.show()
-	$HighScoreButton.show()
 
 func update_score(score):
 	$Score.text = str(score)
@@ -39,18 +38,14 @@ func _on_MessageTimer_timeout():
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	$HighScore.hide()
-	$HighScoreButton.hide()
 	emit_signal("start_game")
 
-
-func _on_HighScoreButton_pressed():
+func get_high_score_from_save_file():
 	var file = File.new()
 	if not file.file_exists("user://saved_game.sav"):
 		high_score = 0
 	else:
-		print("file exists")
 		file.open("user://saved_game.sav", File.READ)
-		print("opening saved game file")
 		var data = {}
 		data = parse_json(file.get_line())
 		file.close()
